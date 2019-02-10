@@ -7,7 +7,7 @@ export default function runTests(tests) {
 		process.stdout.write(` * ${colors.bold(test.name)} ... `);
 		try {
 			test.fn(assert);
-			process.stdout.write(`${colors.green("success")}\n`);
+			process.stdout.write(`${colors.green("ok")}\n`);
 		} catch (err) {
 			process.stdout.write(`${colors.red("failed")}\n`);
 			console.log(err.stack);

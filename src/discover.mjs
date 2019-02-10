@@ -22,7 +22,7 @@ async function findTestsInPaths(basePath, paths, symbol) {
 		const testsObject = module[symbol]();
 		if (typeof testsObject === "object") {
 			const testDescriptors = Object.entries(testsObject).map(([name, fn]) => {
-				return {name: `${prefix}_${name}`, fn};
+				return {name: `${prefix}::${name}`, fn};
 			});
 			return testDescriptors;
 		}
@@ -44,7 +44,7 @@ function testPrefix(basePath, path) {
 		lastPart = lastPart.substr(0, extIdx);
 		parts[parts.length - 1] = lastPart;
 	}
-	return parts.join("_");
+	return parts.join("::");
 }
 
 export default async function findTests(entryPoint, forceEsm, symbol) {
