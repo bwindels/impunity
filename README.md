@@ -11,7 +11,7 @@ export default class SomeClass {
 export function tests() {
 	return {
 		test_a(assert) {
-			assert(new SomeClass()a, undefined);
+			assert(new SomeClass().a, undefined);
 		}
 	}
 }
