@@ -1,0 +1,14 @@
+{
+  "name": "inline-test-runner",
+  "version": "0.0.1",
+  "description": "test runner that discovers tests defined inline in your ES modules",
+  "main": "src/runner.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bruno Windels <sendmeanything@mailbox.org>",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.19.0"
+  }
+}
