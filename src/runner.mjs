@@ -1,18 +1,22 @@
+import * as process from "process";
 import assert from "assert";
 import colors from "colors/safe";
 
 export default function runTests(tests) {
-	let success = true;
+	let failures = 0;
 	tests.forEach(test => {
 		process.stdout.write(` * ${colors.bold(test.name)} ... `);
+		const {fn} = test;
 		try {
-			test.fn(assert);
+			fn(assert);
 			process.stdout.write(`${colors.green("ok")}\n`);
 		} catch (err) {
 			process.stdout.write(`${colors.red("failed")}\n`);
+			// eslint-disable-next-line no-console
 			console.log(err.stack);
-			success = false;
+			failures += 1;
 		}
 	});
-	return success;
+
+	return failures;
 }

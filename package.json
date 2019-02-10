@@ -1,8 +1,8 @@
 {
-  "name": "inline-test-runner",
+  "name": "js-inline-tests",
   "version": "0.0.1",
   "description": "test runner that discovers tests defined inline in your ES modules",
-  "main": "src/runner.js",
+  "main": "src/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,5 +11,8 @@
   "dependencies": {
     "colors": "^1.3.3",
     "commander": "^2.19.0"
+  },
+  "bin": {
+    "inline-tests": "node --experimental-modules --loader ./src/resolve-hook.mjs src/main.mjs"
   }
 }

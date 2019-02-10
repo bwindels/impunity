@@ -1,37 +1,31 @@
-let trackingEnabled = false;
-let projectDir;
-let importedPaths = [];
-let forceEsm = false;
+const importedPaths = [];
 
-export async function resolve(specifier,
-                              parentModuleURL,
-                              defaultResolver) {
+export function resolve(specifier, parentModuleURL, defaultResolver) {
 	if (specifier === "importtracking://paths") {
-		return {
-			url: specifier,
-			format: 'dynamic'
-		};
-	} else {
-		const resolution = defaultResolver(specifier, parentModuleURL);
-		if (global.ImportTrackingConfig) {
-			const config = global.ImportTrackingConfig;
-			if (resolution && resolution.url.startsWith(config.projectDir)) {
-				importedPaths.push(resolution.url);
-				if (config.forceEsm) {
-					resolution.format = "esm";
-				}
+		return Promise.resolve({
+			format: 'dynamic',
+			url: specifier
+		});
+	}
+	const resolution = defaultResolver(specifier, parentModuleURL);
+	if (global.ImportTrackingConfig) {
+		const config = global.ImportTrackingConfig;
+		if (resolution && resolution.url.startsWith(config.projectDir)) {
+			importedPaths.push(resolution.url);
+			if (config.forceEsm) {
+				resolution.format = "esm";
 			}
 		}
-		return resolution;
 	}
+
+	return Promise.resolve(resolution);
 }
 
-export async function dynamicInstantiate(url) {
-	return {
-		exports: ['paths'],
+export function dynamicInstantiate() {
+	return Promise.resolve({
 		execute: (exports) => {
 			exports.paths.set(importedPaths.slice());
-		}
-	};
+		},
+		exports: ['paths']
+	});
 }
-

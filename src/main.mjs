@@ -1,4 +1,5 @@
 import * as commander from "commander";
+import * as process from "process";
 import findTests from "./discover.mjs";
 import runTests from "./runner.mjs";
 
@@ -12,9 +13,14 @@ args
 
 async function main() {
 	const tests = await findTests(args.entryPoint, args.forceEsm, args.symbol);
-	const success = runTests(tests);
-	console.log(`ran ${tests.length} with ${success ? "success" : "failure"}`);
-	process.exit( success ? 0 : -1 );
+	const failures = runTests(tests);
+	if (failures) {
+		process.stdout.write(`Ran ${tests.length} test(s) with ${failures} failures.\n`);
+	} else {
+		process.stdout.write(`All ${tests.length} test(s) passed.\n`);
+	}
+	process.exit( failures ? -1 : 0 );
 }
 
+// eslint-disable-next-line no-console
 main().catch(console.error);
