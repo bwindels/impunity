@@ -6,7 +6,7 @@ let forceEsm = false;
 export async function resolve(specifier,
                               parentModuleURL,
                               defaultResolver) {
-	if (specifier === "importedpaths://") {
+	if (specifier === "importtracking://paths") {
 		return {
 			url: specifier,
 			format: 'dynamic'
@@ -33,12 +33,5 @@ export async function dynamicInstantiate(url) {
 			exports.paths.set(importedPaths.slice());
 		}
 	};
-}
-
-export function startTrackingImports(options) {
-	projectDir = `file://${options.projectDir}`;
-	forceEsm = options.forceEsm;
-	importedPaths = [];
-	trackingEnabled = true;
 }
 

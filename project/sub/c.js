@@ -1,5 +1,5 @@
 export function tests() {
-	return {foo: "this is c"};
+	return {foo: assert => assert(true)};
 }
 
 export const foo = 5;

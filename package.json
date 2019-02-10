@@ -9,6 +9,7 @@
   "author": "Bruno Windels <sendmeanything@mailbox.org>",
   "license": "MIT",
   "dependencies": {
+    "colors": "^1.3.3",
     "commander": "^2.19.0"
   }
 }

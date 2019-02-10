@@ -1,7 +1,5 @@
-import * as assert from "assert";
 import * as commander from "commander";
-import * as path from "path";
-import findTests from "./discovery.mjs";
+import findTests from "./discover.mjs";
 import runTests from "./runner.mjs";
 
 const args = commander.default;
@@ -15,7 +13,8 @@ args
 async function main() {
 	const tests = await findTests(args.entryPoint, args.forceEsm, args.symbol);
 	const success = runTests(tests);
-	console.log("here are the tests", tests);
+	console.log(`ran ${tests.length} with ${success ? "success" : "failure"}`);
+	process.exit( success ? 0 : -1 );
 }
 
 main().catch(console.error);
