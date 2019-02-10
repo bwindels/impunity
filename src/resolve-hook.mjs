@@ -1,4 +1,4 @@
-const importedPaths = [];
+const importedPaths = new Set();
 
 export function resolve(specifier, parentModuleURL, defaultResolver) {
 	if (specifier === "importtracking://paths") {
@@ -11,7 +11,7 @@ export function resolve(specifier, parentModuleURL, defaultResolver) {
 	if (global.ImportTrackingConfig) {
 		const config = global.ImportTrackingConfig;
 		if (resolution && resolution.url.startsWith(config.projectDir)) {
-			importedPaths.push(resolution.url);
+			importedPaths.add(resolution.url);
 			if (config.forceEsm) {
 				resolution.format = "esm";
 			}
@@ -24,7 +24,7 @@ export function resolve(specifier, parentModuleURL, defaultResolver) {
 export function dynamicInstantiate() {
 	return Promise.resolve({
 		execute: (exports) => {
-			exports.paths.set(importedPaths.slice());
+			exports.paths.set(Array.from(importedPaths));
 		},
 		exports: ['paths']
 	});
