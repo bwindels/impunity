@@ -1,11 +1,12 @@
 import * as commander from "commander";
 import * as process from "process";
 import findTests from "./discover.mjs";
+import manifest from "../package.json";
 import runTests from "./runner.mjs";
 
 const args = commander.default;
 args
-  .version('0.0.1')
+  .version(manifest.version)
   .option('--entryPoint [file]', 'the entry point of the import tree where to look for tests')
   .option('--symbol [symbol]', 'the function to look for in each file to return the tests object', "tests")
   .option('--force-esm', 'assume all the modules in the project are ES modules, independent of extensions')

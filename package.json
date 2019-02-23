@@ -1,11 +1,15 @@
 {
-  "name": "js-inline-tests",
-  "version": "0.0.1",
-  "description": "test runner that discovers tests defined inline in your ES modules",
+  "name": "impunity",
+  "version": "0.0.6",
+  "description": "js test runner that finds unit tests in any imported ES module",
   "main": "src/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": [
+    "src/",
+    "cmd.sh"
+  ],
   "author": "Bruno Windels <sendmeanything@mailbox.org>",
   "license": "MIT",
   "dependencies": {
@@ -13,6 +17,13 @@
     "commander": "^2.19.0"
   },
   "bin": {
-    "inline-tests": "node --experimental-modules --loader ./src/resolve-hook.mjs src/main.mjs"
+    "impunity": "cmd.sh"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/bwindels/impunity.git"
   }
 }
