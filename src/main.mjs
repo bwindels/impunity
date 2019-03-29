@@ -14,7 +14,7 @@ args
 
 async function main() {
 	const tests = await findTests(args.entryPoint, args.forceEsm, args.symbol);
-	const failures = runTests(tests);
+	const failures = await runTests(tests);
 	if (failures) {
 		process.stdout.write(`Ran ${tests.length} test(s) with ${failures} failures.\n`);
 	} else {

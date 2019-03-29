@@ -19,7 +19,13 @@ async function findTestsInPaths(basePath, paths, symbol) {
 			return;
 		}
 		const prefix = testPrefix(basePath, new URL(path).pathname);
-		const testsObject = module[symbol]();
+		const result = module[symbol]();
+		let testsObject;
+		if (result instanceof Promise) {
+			testsObject = await result;
+		} else {
+			testsObject = result;
+		}
 		if (typeof testsObject === "object") {
 			const testDescriptors = Object.entries(testsObject).map(([name, fn]) => {
 				return {name: `${prefix}::${name}`, fn};

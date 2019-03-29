@@ -1,6 +1,10 @@
-export function tests() {
+export async function tests() {
+	await new Promise(r => setTimeout(r, 1000));
 	return {
-		foo: assert => assert(true),
+		foo: async (assert) => {
+			await new Promise(r => setTimeout(r, 1000));
+			assert(true);
+		},
 		bar: assert => assert(false),
 	};
 }
