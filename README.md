@@ -7,7 +7,6 @@ export default class SomeClass {
 
 }
 
-//#ifdef TESTS
 export function tests() {
 	return {
 		test_a(assert) {
@@ -15,7 +14,6 @@ export function tests() {
 		}
 	}
 }
-//#endif
 ```
 A test function receives [the nodejs assert module](https://nodejs.org/api/assert.html) so you don't need to import it.
 
@@ -26,4 +24,6 @@ After installing with `npm install --global impunity`, you run the tests with `i
  * subpath::filename::test_a ... ok
 ```
 
-`impunity` looks for an exported function called `tests` (you can choose another name to look for with the `--symbol ...` flag). The `//#ifdef TESTS`, `//#endif` block is optional, to make it easy to remove the tests in production builds using a C pre-processor.
+`impunity` looks for an exported function called `tests` (you can choose another name to look for with the `--symbol ...` flag).
+
+To remove the tests from a production build, [Rollup](https://rollupjs.org/) does a good job of removing unused code automatically during bundling.
