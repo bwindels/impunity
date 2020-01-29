@@ -1,6 +1,6 @@
 import * as process from "process";
 import assert from "assert";
-import colors from "colors/safe";
+import colors from "colors/safe.js";
 
 export default async function runTests(tests) {
 	let failures = 0;
