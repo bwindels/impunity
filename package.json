@@ -1,6 +1,6 @@
 {
   "name": "impunity",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "js test runner that finds unit tests in any imported ES module",
   "main": "src/main.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "src/",
     "cmd.sh"
   ],
-  "author": "Bruno Windels <sendmeanything@mailbox.org>",
+  "author": "Bruno Windels <sendmeanything@fastmail.com>",
   "license": "MIT",
   "dependencies": {
     "colors": "^1.3.3",
@@ -23,7 +23,7 @@
     "node": ">=10.0.0"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/bwindels/impunity.git"
+    "type": "git",
+    "url": "https://github.com/bwindels/impunity.git"
   }
 }

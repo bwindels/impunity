@@ -13,7 +13,7 @@ export function resolve(specifier, parentModuleURL, defaultResolver) {
 		if (resolution && resolution.url.startsWith(config.projectDir)) {
 			importedPaths.add(resolution.url);
 			if (config.forceEsm) {
-				resolution.format = "esm";
+				resolution.format = "module";
 			}
 		}
 	}

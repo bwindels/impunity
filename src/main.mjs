@@ -7,7 +7,7 @@ import runTests from "./runner.mjs";
 const args = commander.default;
 args
   .version(manifest.version)
-  .option('--entryPoint [file]', 'the entry point of the import tree where to look for tests')
+  .option('--entry-point [file]', 'the entry point of the import tree where to look for tests')
   .option('--symbol [symbol]', 'the function to look for in each file to return the tests object', "tests")
   .option('--force-esm', 'assume all the modules in the project are ES modules, independent of extensions')
   .parse(process.argv);
