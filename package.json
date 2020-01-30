@@ -1,6 +1,6 @@
 {
   "name": "impunity",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "js test runner that finds unit tests in any imported ES module",
   "main": "src/main.js",
   "scripts": {
