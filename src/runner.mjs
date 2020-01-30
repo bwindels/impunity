@@ -52,7 +52,6 @@ export default async function runTests(tests) {
 			process.stdout.write(`${colors.green("ok")}\n`);
 		}
 	}
-	process.stdout.flush();
 
 	return failures;
 }
