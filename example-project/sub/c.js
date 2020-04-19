@@ -10,6 +10,7 @@ export async function tests() {
 			console.log("fail!");
 			assert(false);
 		},
+		timeout: () => new Promise(() => {}), // will never resolve
 	};
 }
 

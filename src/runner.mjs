@@ -25,6 +25,8 @@ class OutputBuffer {
 	}
 }
 
+const TIMEOUT = 5000;	// all tests should be done in 5s
+
 export default async function runTests(tests) {
 	let failures = 0;
 	const buffer = new OutputBuffer([process.stdout, process.stderr]);
@@ -36,7 +38,10 @@ export default async function runTests(tests) {
 		try {
 			const ret = fn(assert);
 			if (ret instanceof Promise) {
-				await ret;
+				const timeout = new Promise((_, reject) => {
+					setTimeout(() => reject(new Error(`Test timed out after ${TIMEOUT}ms`)), TIMEOUT);
+				});
+				await Promise.race([ret, timeout]);
 			}
 		} catch (err) {
 			error = err;
