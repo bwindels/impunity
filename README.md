@@ -17,7 +17,7 @@ export function tests() {
 ```
 A test function receives [the nodejs assert module](https://nodejs.org/api/assert.html) so you don't need to import it.
 
-After installing with `npm install --global impunity`, you run the tests with `impunity --entryPoint your/main.js` (use `--force-esm` if you use ES modules with ".js" extension) and it will discover all the tests in any file (indirectly) imported from your entry point, and run them:
+After installing with `npm install --global impunity`, you run the tests with `impunity --entry-point your/main.js` (use `--force-esm` if you use ES modules with ".js" extension) and it will discover all the tests in any file (indirectly) imported from your entry point, and run them:
 
 ```
 (node:2031) ExperimentalWarning: The ESM module loader is experimental.
