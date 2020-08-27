@@ -8,8 +8,8 @@ async function findProjectImports(projectDirUrl, entryPointUrl, forceEsm) {
 	};
 	await import(entryPointUrl);
 	global.ImportTrackingConfig = null;
-	const {paths} = await import("importtracking://paths");
-	return paths;
+	const pathsModule = await import("data://paths");
+	return pathsModule.default;
 }
 
 async function findTestsInPaths(basePath, paths, symbol) {
