@@ -4,7 +4,7 @@
   "description": "js test runner that finds unit tests in any imported ES module",
   "main": "src/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./cmd.sh --entry-point example-project/a.js --force-esm"
   },
   "files": [
     "src/",
