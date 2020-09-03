@@ -1,10 +1,10 @@
 import * as path from "path";
 
-async function findProjectImports(projectDirUrl, entryPointUrl, forceEsm) {
+async function findProjectImports(projectDirUrl, entryPointUrl, forceEsmDirUrls) {
 	// set flag resolve hook can read
 	global.ImportTrackingConfig = {
 		projectDir: projectDirUrl,
-		forceEsm
+        forceEsmDirs: forceEsmDirUrls
 	};
 	await import(entryPointUrl);
 	global.ImportTrackingConfig = null;
@@ -53,12 +53,14 @@ function testPrefix(basePath, path) {
 	return parts.join("::");
 }
 
-export default async function findTests(entryPoint, forceEsm, symbol) {
+export default async function findTests(entryPoint, symbol, forceEsmDirs) {
 	entryPoint = path.resolve(entryPoint);
-	const projectDir = path.dirname(entryPoint);
 	const entryPointUrl = `file://${entryPoint}`;
-	const projectDirUrl = `file://${projectDir}`;
-	let paths = await findProjectImports(projectDirUrl, entryPointUrl, forceEsm);
+    const forceEsmDirUrls = (forceEsmDirs || []).map(dir => `file://${path.resolve(dir)}`);
+	const projectDir = path.dirname(entryPoint);
+	const projectDirUrl = `file://${projectDir}/`;
+
+	let paths = await findProjectImports(projectDirUrl, entryPointUrl, forceEsmDirUrls);
 	paths.sort();
 	const tests = await findTestsInPaths(projectDir, paths, symbol);
 	return tests;
