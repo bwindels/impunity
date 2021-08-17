@@ -11,3 +11,15 @@ commander@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-6.1.0.tgz#f8d722b78103141006b66f4c7ba1e97315ba75bc"
   integrity sha512-wl7PNrYWd2y5mp1OK/LhTlv8Ff4kQJQRXXAvF+uU/TPNiVJUxZLRYGj/B0y/lPGAVcSbJqH2Za/cvHmrPMC8mA==
+
+esbuild-node-loader@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/esbuild-node-loader/-/esbuild-node-loader-0.3.1.tgz#fa761e020eff316549ddc3c51a25ec9ffc159ff2"
+  integrity sha512-75xPOySulti9R5LwYOMmKiwHyXGr/f89I7UkHolLxRqeBiUNqcyCmNTjv+fO2WV9G3f7LDKVZJlbWoYh5LBpfQ==
+  dependencies:
+    esbuild "^0.12.6"
+
+esbuild@^0.12.6:
+  version "0.12.20"
+  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.12.20.tgz#4d3c9d83c99a4031e027b42a4c398c23b6827cb0"
+  integrity sha512-u7+0qTo9Z64MD9PhooEngCmzyEYJ6ovFhPp8PLNh3UasR5Ihjv6HWVXqm8uHmasdQlpsAf0IsY4U0YVUfCpt4Q==
