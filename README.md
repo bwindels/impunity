@@ -27,3 +27,7 @@ After installing with `npm install --global impunity`, you run the tests with `i
 `impunity` looks for an exported function called `tests` (you can choose another name to look for with the `--symbol ...` flag).
 
 To remove the tests from a production build, [Rollup](https://rollupjs.org/) does a good job of removing unused code automatically during bundling.
+
+## Typescript
+
+impunity uses `esbuild-node-loader` to transform source files, including typescript files.
