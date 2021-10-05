@@ -53,11 +53,10 @@ function testPrefix(basePath, path) {
 	return parts.join("::");
 }
 
-export default async function findTests(entryPoint, symbol, forceEsmDirs) {
-	entryPoint = path.resolve(entryPoint);
+export default async function findTests(entryPoint, rootDir, symbol, forceEsmDirs) {
 	const entryPointUrl = `file://${entryPoint}`;
     const forceEsmDirUrls = (forceEsmDirs || []).map(dir => `file://${path.resolve(dir)}`);
-	const projectDir = path.dirname(entryPoint);
+	const projectDir = path.dirname(rootDir);
 	const projectDirUrl = `file://${projectDir}/`;
 
 	let paths = await findProjectImports(projectDirUrl, entryPointUrl, forceEsmDirUrls);
