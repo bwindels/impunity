@@ -18,7 +18,7 @@
     "esbuild-node-loader": "^0.3.1"
   },
   "bin": {
-    "impunity": "cmd.sh"
+    "impunity": "cmd.js"
   },
   "engines": {
     "node": ">=10.0.0"
