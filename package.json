@@ -15,7 +15,7 @@
   "dependencies": {
     "colors": "^1.3.3",
     "commander": "^6.1.0",
-    "esbuild-node-loader": "^0.3.1"
+    "esbuild-node-loader": "^0.6.3"
   },
   "bin": {
     "impunity": "cmd.js"
