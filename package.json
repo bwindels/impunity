@@ -4,7 +4,7 @@
   "description": "js test runner that finds unit tests in any imported ES module",
   "main": "src/main.js",
   "scripts": {
-    "test": "./cmd.js --entry-point example-project/a.js --force-esm-dirs example-project/"
+    "test": "./cmd.js --entry-point example-project/a.ts --force-esm-dirs example-project/"
   },
   "files": [
     "src/",
