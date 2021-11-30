@@ -24,7 +24,7 @@ async function main() {
 	} else {
 		process.stdout.write(`All ${tests.length} test(s) passed.\n`);
 	}
-	process.exit( failures ? -1 : 0 );
+	process.exit( failures ? 1 : 0 );
 }
 
 // eslint-disable-next-line no-console
