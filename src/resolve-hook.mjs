@@ -8,7 +8,7 @@ import {resolve as resolveWithEsBuild, getFormat as getFormatWithEsBuild, load a
 
 export async function resolve(specifier, context, defaultResolver) {
     if (specifier === PATH_URL) {
-        return Promise.resolve({url: specifier});
+        return Promise.resolve({url: specifier, shortCircuit: true});
     }
     const resolution = await resolveWithEsBuild(specifier, context, defaultResolver);
     if (global.ImportTrackingConfig) {
@@ -18,7 +18,7 @@ export async function resolve(specifier, context, defaultResolver) {
         }
     }
 
-    return Promise.resolve(resolution);
+    return Promise.resolve(Object.assign(resolution, {shortCircuit: true}));
 }
 
 export function getFormat(url, context, defaultFormat) {
@@ -54,11 +54,11 @@ export function getSource(url, context, defaultGetSource) {
 // See: https://github.com/nodejs/node/pull/37468
 export function load(url, context, defaultLoad) {
     if (url === PATH_URL) {
-        return {format: PATHS_MODULE_FORMAT, source: importedPathsSource(importedPaths)};
+        return {format: PATHS_MODULE_FORMAT, source: importedPathsSource(importedPaths), shortCircuit: true};
     } else {
         if (forceESM(global.ImportTrackingConfig, url)) {
             context.format = "module";
         }
-        return loadEsBuild(url, context, defaultLoad);
+        return Object.assign(loadEsBuild(url, context, defaultLoad), {shortCircuit: true});
     }
 }
